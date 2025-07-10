@@ -22,8 +22,6 @@ resource "docker_container" "nginx_proxy" {
   }
 
   volumes {
-    # --- LÍNEA CORREGIDA ---
-    # Montamos nuestro archivo en el directorio de inclusión de Nginx.
     host_path      = abspath("../nginx/nginx.conf")
     container_path = "/etc/nginx/conf.d/default.conf"
     read_only      = true
