@@ -85,6 +85,6 @@
         <rect x="0" y="0" width="10" height="10" fill="#2ecc71" rx="2"/>
         <text x="20" y="10" class="label-text">Flujo de Tráfico Permitido</text>
         <rect x="250" y="0" width="10" height="10" fill="#e74c3c" rx="2"/>
-        <text x="270" y="10" class="label-text">Flujo de Tráfico Bloqueado</o>
+        <text x="270" y="10" class="label-text">Flujo de Tráfico Bloqueado</text>
     </g>
 </svg>
