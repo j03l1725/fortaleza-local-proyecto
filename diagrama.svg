@@ -1,0 +1,90 @@
+<svg width="800" height="550" viewBox="0 0 800 550" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <!-- Definición de Estilos y Marcadores -->
+    <defs>
+        <style>
+            .host-box { fill: #2c3e50; stroke: #34495e; stroke-width: 2; rx: 15; }
+            .network-box { fill: #34495e; stroke: #7f8c8d; stroke-width: 1.5; stroke-dasharray: 8 4; rx: 10; }
+            .container-box { fill: #ffffff; stroke: #2980b9; stroke-width: 2; rx: 8; }
+            .proxy-box { stroke: #27ae60; }
+            .app-box { stroke: #c0392b; }
+            .host-text { font-size: 18px; fill: #ecf0f1; font-weight: bold; }
+            .network-text { font-size: 16px; fill: #bdc3c7; font-style: italic; }
+            .container-text { font-size: 16px; fill: #2c3e50; font-weight: bold; }
+            .label-text { font-size: 14px; fill: #34495e; }
+            .port-text { font-size: 12px; fill: #7f8c8d; }
+            .user-text { font-size: 16px; fill: #2c3e50; font-weight: bold; }
+            .flow-text { font-size: 12px; font-style: italic; }
+            .arrow-line { stroke-width: 2.5; }
+            .success-flow { stroke: #2ecc71; }
+            .blocked-flow { stroke: #e74c3c; stroke-dasharray: 5 5; }
+        </style>
+        <marker id="arrowhead-success" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2ecc71" />
+        </marker>
+        <marker id="arrowhead-blocked" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c" />
+        </marker>
+        <marker id="block-symbol" markerWidth="15" markerHeight="15" refX="7.5" refY="7.5" orient="auto">
+            <line x1="2" y1="2" x2="13" y2="13" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+            <line x1="13" y1="2" x2="2" y2="13" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+        </marker>
+    </defs>
+
+    <!-- Fondo -->
+    <rect width="100%" height="100%" fill="#f9f9f9"/>
+
+    <!-- Actor Externo: Usuario -->
+    <g transform="translate(60, 250)">
+        <circle cx="25" cy="25" r="25" fill="#3498db"/>
+        <circle cx="25" cy="20" r="8" fill="#ecf0f1"/>
+        <path d="M10 48 C 15 35, 35 35, 40 48 Z" fill="#ecf0f1"/>
+        <text x="12" y="70" class="user-text">Usuario</text>
+    </g>
+
+    <!-- Caja Principal: Máquina Host -->
+    <rect x="200" y="30" width="570" height="490" class="host-box"/>
+    <text x="220" y="60" class="host-text">Máquina Host (Ubuntu / Docker Engine)</text>
+
+    <!-- Caja de Red: Red Docker Segura -->
+    <rect x="220" y="90" width="530" height="380" class="network-box"/>
+    <text x="240" y="120" class="network-text">Red Segura Docker (`fortaleza-net`)</text>
+
+    <!-- Contenedor: Proxy Inverso Nginx -->
+    <rect x="250" y="180" width="220" height="150" class="container-box proxy-box"/>
+    <text x="280" y="210" class="container-text">Proxy Inverso (Nginx)</text>
+    <text x="260" y="235" class="label-text">Punto de Entrada Público</text>
+    <text x="320" y="290" class="port-text">Puerto: 80</text>
+
+    <!-- Contenedor: Aplicación Java -->
+    <rect x="500" y="180" width="220" height="150" class="container-box app-box"/>
+    <text x="525" y="210" class="container-text">Aplicación (Tomcat/Java)</text>
+    <text x="510" y="235" class="label-text">Servicio Aislado y Protegido</text>
+    <text x="565" y="290" class="port-text">Puerto: 8080</text>
+
+    <!-- Flujo de Tráfico Permitido -->
+    <path id="flow1" d="M110,275 C 180,275 200,275 250,275" stroke-dasharray="5,5" fill="none" class="arrow-line success-flow" marker-end="url(#arrowhead-success)"/>
+    <text class="flow-text" dy="-5">
+        <textPath href="#flow1" startOffset="50%" text-anchor="middle">1. Petición HTTP (Puerto 80)</textPath>
+    </text>
+
+    <path id="flow2" d="M470,255 C 485,255 485,255 500,255" fill="none" class="arrow-line success-flow" marker-end="url(#arrowhead-success)"/>
+    <text class="flow-text" dy="-5">
+        <textPath href="#flow2" startOffset="50%" text-anchor="middle">2. Redirección Interna</textPath>
+    </text>
+
+    <!-- Flujo de Tráfico Bloqueado -->
+    <path id="flow3" d="M110,300 C 250,330 400,350 500,300" fill="none" class="arrow-line blocked-flow" marker-end="url(#arrowhead-blocked)"/>
+    <text class="flow-text" fill="#c0392b" dy="15">
+        <textPath href="#flow3" startOffset="50%" text-anchor="middle">3. Acceso Directo (BLOQUEADO)</textPath>
+    </text>
+    <circle cx="395" cy="342" r="12" fill="#f9f9f9"/>
+    <use href="#block-symbol" x="388" y="335"/>
+
+    <!-- Leyenda -->
+    <g transform="translate(230, 490)">
+        <rect x="0" y="0" width="10" height="10" fill="#2ecc71" rx="2"/>
+        <text x="20" y="10" class="label-text">Flujo de Tráfico Permitido</text>
+        <rect x="250" y="0" width="10" height="10" fill="#e74c3c" rx="2"/>
+        <text x="270" y="10" class="label-text">Flujo de Tráfico Bloqueado</o>
+    </g>
+</svg>

@@ -10,11 +10,9 @@ El objetivo es desplegar una aplicación web Java (Servlet) de forma segura y au
 
 ## 2. Diagrama de Arquitectura
 
-A continuación se muestra el diagrama de la arquitectura final. El contenedor Nginx actúa como el único punto de entrada, recibiendo el tráfico en el puerto 80 y redirigiéndolo a la aplicación, que se encuentra aislada dentro de la red Docker interna.
-
-![Diagrama de Arquitectura](diagrama.png)
-
-* **Nota:** Deberás crear este diagrama usando una herramienta como [draw.io](https://app.diagrams.net/) (gratuita) o similar y guardar la imagen como `diagrama.png` en la raíz de tu proyecto.
+<p align="center">
+  <img src="diagrama.svg" alt="Diagrama de Arquitectura" width="80%">
+</p>
 
 ---
 
