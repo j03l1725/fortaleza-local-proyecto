@@ -10,10 +10,7 @@ El objetivo es desplegar una aplicación web Java (Servlet) de forma segura y au
 
 ## 2. Diagrama de Arquitectura
 
-<p align="center">
-  <img src="diagrama.svg" alt="Diagrama de Arquitectura" width="80%">
-</p>
-
+![Diagrama de Arquitectura](https://raw.githubusercontent.com/j03l1725/fortaleza-local-proyecto/refs/heads/main/diagrama.svg)
 ---
 
 ## 3. Tecnologías Utilizadas
