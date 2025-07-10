@@ -15,8 +15,8 @@ El objetivo es desplegar una aplicación web Java (Servlet) de forma segura y au
 
 ## 3. Tecnologías Utilizadas
 
-| Tecnología | Rol en el Proyecto | Material de Estudio Relevante |
-| :--- | :--- | :--- |
+| Tecnología | Rol en el Proyecto |
+| :--- | :--- |
 | **Java (OpenJDK 17)** | Lenguaje de programación para la aplicación web de backend. |
 | **Maven** | Herramienta para la construcción y empaquetado de la aplicación Java. |
 | **Docker** | Plataforma de contenerización para empaquetar y aislar la aplicación y el proxy. |
