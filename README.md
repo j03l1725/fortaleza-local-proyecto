@@ -17,12 +17,12 @@ El objetivo es desplegar una aplicación web Java (Servlet) de forma segura y au
 
 | Tecnología | Rol en el Proyecto | Material de Estudio Relevante |
 | :--- | :--- | :--- |
-| **Java (OpenJDK 17)** | Lenguaje de programación para la aplicación web de backend. | `Semana 12: Servelet` |
-| **Maven** | Herramienta para la construcción y empaquetado de la aplicación Java. | `Semana 12: Servelet` |
-| **Docker** | Plataforma de contenerización para empaquetar y aislar la aplicación y el proxy. | `Semana 6: Dockers` |
-| **Terraform** | Herramienta de IaC para definir y gestionar la infraestructura local (contenedores, redes). | `Semana 11: Infraestructura como código` |
-| **Nginx** | Implementado como un Reverse Proxy para actuar como punto de entrada seguro. | `Semana 9: Seguridad en la nube` (Concepto de Gateway) |
-| **Git y GitHub** | Sistema de control de versiones y plataforma de hospedaje de código. | `Semana 10: Automatización de los DevOps` |
+| **Java (OpenJDK 17)** | Lenguaje de programación para la aplicación web de backend. |
+| **Maven** | Herramienta para la construcción y empaquetado de la aplicación Java. |
+| **Docker** | Plataforma de contenerización para empaquetar y aislar la aplicación y el proxy. |
+| **Terraform** | Herramienta de IaC para definir y gestionar la infraestructura local (contenedores, redes). |
+| **Nginx** | Implementado como un Reverse Proxy para actuar como punto de entrada seguro. |
+| **Git y GitHub** | Sistema de control de versiones y plataforma de hospedaje de código. |
 
 ---
 
@@ -32,7 +32,7 @@ Para desplegar y verificar la "Fortaleza Local" en un sistema Ubuntu con las her
 
 1.  **Clonar el Repositorio:**
     ```bash
-    git clone [https://github.com/TU_USUARIO/fortaleza-local-proyecto.git](https://github.com/TU_USUARIO/fortaleza-local-proyecto.git)
+    git clone [https://github.com/j03l1725/fortaleza-local-proyecto.git](https://github.com/j03l1725/fortaleza-local-proyecto.git)
     cd fortaleza-local-proyecto
     ```
 
