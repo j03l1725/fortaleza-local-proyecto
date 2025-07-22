@@ -37,7 +37,7 @@ La aplicación es un servicio web Java (Servlet) que se conecta a una base de da
 El siguiente diagrama ilustra la arquitectura final de 3 niveles. El contenedor **Nginx** actúa como el único punto de entrada, recibiendo el tráfico y redirigiéndolo a la aplicación. La aplicación, a su vez, es la única que puede comunicarse con la base de datos **PostgreSQL**. Tanto la aplicación como la base de datos están completamente aisladas del exterior.
 
 <p align="center">
-  <img src="diagrama_v2.svg" alt="Diagrama de Arquitectura v2" width="90%">
+  <img src="diagrama.svg" alt="Diagrama de Arquitectura v2" width="90%">
 </p>
 
 ---
