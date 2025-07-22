@@ -1,0 +1,68 @@
+# fortaleza-local-proyecto/docker-compose.yml
+# Versión final con cadena de dependencias de salud.
+
+services:
+  # 1. Servicio de Base de Datos (con Health Check)
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: visit_counter_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: supersecretpassword
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - fortaleza_db_data:/var/lib/postgresql/data
+    networks:
+      - fortaleza-net
+    # --- AÑADIR ESTE BLOQUE ---
+    # Este healthcheck verifica que PostgreSQL esté listo para aceptar conexiones.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d visit_counter_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    # --- FIN DEL BLOQUE AÑADIDO ---
+
+  # 2. Servicio de Aplicación (ahora depende de la salud de la BD)
+  app:
+    build: .
+    environment:
+      DB_HOST: db
+      DB_NAME: visit_counter_db
+      DB_USER: admin
+      DB_PASSWORD: supersecretpassword
+    networks:
+      - fortaleza-net
+    # --- MODIFICAR ESTE BLOQUE ---
+    # La aplicación ahora esperará a que el servicio 'db' esté saludable.
+    depends_on:
+      db:
+        condition: service_healthy
+    # --- FIN DEL BLOQUE MODIFICADO ---
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # 3. Servicio de Gateway (sin cambios, ya depende de la salud de la app)
+  proxy:
+    image: nginx:1.25-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - fortaleza-net
+    depends_on:
+      app:
+        condition: service_healthy
+
+networks:
+  fortaleza-net:
+    driver: bridge
+
+volumes:
+  fortaleza_db_data:
+    driver: local
