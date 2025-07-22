@@ -44,15 +44,15 @@ El siguiente diagrama ilustra la arquitectura final de 3 niveles. El contenedor 
 
 ## 🛠️ Arsenal Tecnológico
 
-| Tecnología | Rol en el Proyecto | Material de Estudio Relevante |
-| :--- | :--- | :--- |
-| ☕ **Java / Servlet** | Desarrollo de la lógica de negocio de la aplicación (Contador de visitas). | Semana 12: Servelet |
-| 🐘 **PostgreSQL** | Sistema de gestión de base de datos para la persistencia de datos. | Semana 6: Dockers (Contenerización de BD) |
-| 🐳 **Docker** | Plataforma de contenerización para empaquetar y aislar cada servicio. | Semana 6: Dockers |
-| 🐋 **Docker Compose** | Orquestación del entorno de desarrollo local multi-contenedor. | Semana 6: Dockers |
-| 🚀 **Nginx** | Implementado como Reverse Proxy para actuar como Gateway de seguridad. | Semana 9: Seguridad en la nube |
-| 🌍 **Terraform** | Herramienta de IaC para el aprovisionamiento de la infraestructura. | Semana 11: Infraestructura como código |
-| 🐙 **Git y GitHub** | Sistema de control de versiones y plataforma de hospedaje de código. | Semana 10: Automatización de los DevOps |
+| Tecnología | Rol en el Proyecto |
+| :--- | :--- | 
+| ☕ **Java / Servlet** | Desarrollo de la lógica de negocio de la aplicación (Contador de visitas). |
+| 🐘 **PostgreSQL** | Sistema de gestión de base de datos para la persistencia de datos. |
+| 🐳 **Docker** | Plataforma de contenerización para empaquetar y aislar cada servicio. |
+| 🐋 **Docker Compose** | Orquestación del entorno de desarrollo local multi-contenedor. |
+| 🚀 **Nginx** | Implementado como Reverse Proxy para actuar como Gateway de seguridad. |
+| 🌍 **Terraform** | Herramienta de IaC para el aprovisionamiento de la infraestructura. |
+| 🐙 **Git y GitHub** | Sistema de control de versiones y plataforma de hospedaje de código. |
 
 ---
 
