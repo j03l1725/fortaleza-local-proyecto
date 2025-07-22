@@ -1,80 +1,130 @@
-# Proyecto: Fortaleza Local
+Proyecto: Fortaleza Local v2
+1. Descripción del Proyecto
+Este proyecto es una demostración práctica de cómo desplegar una arquitectura web de tres niveles (Gateway, Aplicación, Base de Datos) de forma segura, persistente y reproducible, aplicando los principios de la Computación en la Nube en un entorno local.
 
-## 1. Descripción del Proyecto
+El objetivo es demostrar el dominio de Infraestructura como Código (IaC), Contenerización y patrones de seguridad de red. La infraestructura es gestionada de forma declarativa con Terraform, los servicios se ejecutan en contenedores Docker aislados y la orquestación del entorno de desarrollo se maneja con Docker Compose.
 
-Este proyecto es una demostración práctica de los principios de **Infraestructura como Código (IaC)**, **Contenerización** y **Arquitectura de Red Segura**, implementados en un entorno local para simular un despliegue en la nube.
+La aplicación es un servicio web Java (Servlet) que se conecta a una base de datos PostgreSQL para registrar y mostrar un contador de visitas, demostrando así una arquitectura con estado y persistencia de datos.
 
-El objetivo es desplegar una aplicación web Java (Servlet) de forma segura y automatizada, protegiéndola del acceso directo externo a través de un patrón de Reverse Proxy. Toda la infraestructura es gestionada de forma declarativa con **Terraform** y los servicios se ejecutan en contenedores **Docker** aislados.
+2. Diagrama de Arquitectura
+El siguiente diagrama ilustra la arquitectura final de 3 niveles. El contenedor Nginx actúa como el único punto de entrada, recibiendo el tráfico y redirigiéndolo a la aplicación. La aplicación, a su vez, es la única que puede comunicarse con la base de datos PostgreSQL. Tanto la aplicación como la base de datos están completamente aisladas del exterior.
 
----
+(Nota: La URL del diagrama ya está actualizada a la nueva versión que crearemos a continuación).
 
-## 2. Diagrama de Arquitectura
+<p align="center">
+<img src="https://raw.githubusercontent.com/j03l1725/fortaleza-local-proyecto/main/diagrama_v2.svg" alt="Diagrama de Arquitectura v2" width="90%">
+</p>
 
-![Diagrama de Arquitectura](https://raw.githubusercontent.com/j03l1725/fortaleza-local-proyecto/refs/heads/main/diagrama.svg)
----
+3. Tecnologías Utilizadas
+Tecnología
 
-## 3. Tecnologías Utilizadas
+Rol en el Proyecto
 
-| Tecnología | Rol en el Proyecto |
-| :--- | :--- |
-| **Java (OpenJDK 17)** | Lenguaje de programación para la aplicación web de backend. |
-| **Maven** | Herramienta para la construcción y empaquetado de la aplicación Java. |
-| **Docker** | Plataforma de contenerización para empaquetar y aislar la aplicación y el proxy. |
-| **Terraform** | Herramienta de IaC para definir y gestionar la infraestructura local (contenedores, redes). |
-| **Nginx** | Implementado como un Reverse Proxy para actuar como punto de entrada seguro. |
-| **Git y GitHub** | Sistema de control de versiones y plataforma de hospedaje de código. |
+Material de Estudio Relevante
 
----
+Java / Servlet
 
-## 4. Instrucciones de Ejecución
+Desarrollo de la lógica de negocio de la aplicación (Contador de visitas).
 
-Para desplegar y verificar la "Fortaleza Local" en un sistema Ubuntu con las herramientas requeridas instaladas, sigue estos pasos:
+Semana 12: Servelet
 
-1.  **Clonar el Repositorio:**
-    ```bash
-    git clone [https://github.com/j03l1725/fortaleza-local-proyecto.git](https://github.com/j03l1725/fortaleza-local-proyecto.git)
-    cd fortaleza-local-proyecto
-    ```
+PostgreSQL
 
-2.  **Construir la Aplicación Java:**
-    ```bash
-    mvn clean package
-    ```
+Sistema de gestión de base de datos para la persistencia de datos.
 
-3.  **Construir la Imagen Docker de la Aplicación:**
-    ```bash
-    docker build -t fortaleza-app:1.0 .
-    ```
+Semana 6: Dockers (Contenerización de BD)
 
-4.  **Desplegar la Infraestructura con Terraform:**
-    ```bash
-    cd infra
-    terraform init
-    terraform apply -auto-approve
-    ```
+Docker
 
-5.  **Verificar la Implementación:**
-    * **Prueba de acceso público (debe funcionar):**
-      ```bash
-      curl http://localhost/health
-      ```
-    * **Prueba de acceso directo (debe fallar):**
-      ```bash
-      curl http://localhost:8080/health
-      ```
+Plataforma de contenerización para empaquetar y aislar cada servicio.
 
-6.  **Destruir la Infraestructura:**
-    ```bash
-    terraform destroy -auto-approve
-    ```
+Semana 6: Dockers
 
----
+Docker Compose
 
-## 5. Simulación de Conceptos de Nube
+Orquestación del entorno de desarrollo local multi-contenedor.
 
-Este proyecto simula los siguientes conceptos de seguridad y arquitectura de nube en un entorno local:
+Semana 6: Dockers
 
-* **Red Privada Virtual (VPC):** Simulada mediante una red Docker personalizada (`fortaleza-net`), que crea un perímetro de red aislado para nuestros servicios.
-* **Subred Privada:** El contenedor de la aplicación (`fortaleza-app-container`) no expone puertos al host, simulando un recurso en una subred privada que no es accesible desde internet.
-* **Gateway / Balanceador de Carga:** El contenedor **Nginx** actúa como nuestro punto de entrada controlado (Gateway), recibiendo todo el tráfico y distribuyéndolo internamente. Es el único componente expuesto al "público" (la máquina host).
-* **Control de Acceso (Grupos de Seguridad):** El aislamiento de red de Docker, junto con la configuración del Reverse Proxy, simula un grupo de seguridad que solo permite el tráfico desde el proxy hacia la aplicación, bloqueando el resto.
+Nginx
+
+Implementado como Reverse Proxy para actuar como Gateway de seguridad.
+
+Semana 9: Seguridad en la nube
+
+Terraform
+
+Herramienta de IaC para el aprovisionamiento de la infraestructura de despliegue.
+
+Semana 11: Infraestructura como código
+
+Git y GitHub
+
+Sistema de control de versiones y plataforma de hospedaje de código.
+
+Semana 10: Automatización de los DevOps
+
+4. Instrucciones de Ejecución
+4.1. Entorno de Desarrollo (con Docker Compose)
+Este es el método recomendado para pruebas rápidas y desarrollo.
+
+Clonar el Repositorio:
+
+git clone https://github.com/j03l1725/fortaleza-local-proyecto.git
+cd fortaleza-local-proyecto
+
+Construir y Levantar la Arquitectura:
+Este único comando construirá la imagen de la aplicación y lanzará los tres contenedores en el orden correcto.
+
+docker-compose up --build
+
+Verificar el Funcionamiento:
+
+Abre tu navegador o usa curl para acceder a la aplicación. El contador de visitas debe aumentar con cada petición.
+
+curl http://localhost/
+
+Detener y Limpiar el Entorno:
+
+docker-compose down
+
+4.2. Despliegue Simulado (con Terraform)
+Este método simula un despliegue de producción gestionado por IaC.
+
+Construir la Imagen de la Aplicación:
+Asegúrate de que el archivo .war esté generado (mvn clean package) y luego construye la imagen Docker.
+
+docker build -t fortaleza-app:1.0 .
+
+Desplegar la Infraestructura con Terraform:
+
+cd infra
+terraform init
+terraform apply -auto-approve
+
+Verificar la Implementación:
+
+Prueba de acceso público (debe funcionar):
+
+curl http://localhost/
+
+Prueba de acceso directo a la app (debe fallar):
+
+curl http://localhost:8080/
+
+Destruir la Infraestructura:
+
+terraform destroy -auto-approve
+
+5. Simulación de Conceptos de Nube
+Este proyecto simula los siguientes conceptos de seguridad y arquitectura de nube:
+
+Arquitectura de 3 Niveles: La separación de responsabilidades en Gateway (Nginx), Lógica (Java App) y Datos (PostgreSQL) es un pilar de las arquitecturas robustas.
+
+Red Privada (VPC): Simulada mediante una red Docker personalizada (fortaleza-net), que crea un perímetro de red aislado.
+
+Aislamiento de Recursos (Subredes Privadas): Tanto la aplicación como la base de datos no exponen puertos al host, simulando recursos en subredes privadas.
+
+Gateway y Control de Acceso: El contenedor Nginx actúa como nuestro Gateway controlado. El aislamiento de red de Docker simula un grupo de seguridad que solo permite el tráfico desde el proxy hacia la aplicación y desde la aplicación hacia la base de datos.
+
+Persistencia de Datos: El uso de volúmenes de Docker demuestra cómo se gestionan los datos con estado en un entorno de contenedores efímeros.
