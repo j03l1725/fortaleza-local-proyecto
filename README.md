@@ -1,101 +1,156 @@
-<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
-    <!-- Definición de Estilos y Marcadores -->
-    <defs>
-        <style>
-            .host-box { fill: #2c3e50; stroke: #34495e; stroke-width: 2; rx: 15; }
-            .network-box { fill: #34495e; stroke: #7f8c8d; stroke-width: 1.5; stroke-dasharray: 8 4; rx: 10; }
-            .container-box { fill: #ffffff; stroke: #2980b9; stroke-width: 2; rx: 8; }
-            .proxy-box { stroke: #27ae60; }
-            .app-box { stroke: #2980b9; }
-            .db-box { stroke: #8e44ad; }
-            .host-text { font-size: 18px; fill: #ecf0f1; font-weight: bold; }
-            .network-text { font-size: 16px; fill: #bdc3c7; font-style: italic; }
-            .container-text { font-size: 16px; fill: #2c3e50; font-weight: bold; }
-            .label-text { font-size: 14px; fill: #34495e; }
-            .port-text { font-size: 12px; fill: #7f8c8d; }
-            .user-text { font-size: 16px; fill: #2c3e50; font-weight: bold; }
-            .flow-text { font-size: 12px; font-style: italic; fill: #34495e;}
-            .arrow-line { stroke-width: 2.5; }
-            .success-flow { stroke: #2ecc71; }
-            .internal-flow { stroke: #3498db; }
-            .blocked-flow { stroke: #e74c3c; stroke-dasharray: 5 5; }
-        </style>
-        <marker id="arrowhead-success" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#2ecc71" />
-        </marker>
-        <marker id="arrowhead-internal" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" />
-        </marker>
-        <marker id="block-symbol" markerWidth="15" markerHeight="15" refX="7.5" refY="7.5" orient="auto">
-            <line x1="2" y1="2" x2="13" y2="13" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
-            <line x1="13" y1="2" x2="2" y2="13" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
-        </marker>
-    </defs>
+<div align="center">
 
-    <!-- Fondo -->
-    <rect width="100%" height="100%" fill="#f9f9f9"/>
+🛡️ Fortaleza Local v2 🛡️
+Simulación de una Arquitectura de Nube Segura y Automatizada
 
-    <!-- Actor Externo: Usuario -->
-    <g transform="translate(40, 270)">
-        <circle cx="25" cy="25" r="25" fill="#3498db"/>
-        <circle cx="25" cy="20" r="8" fill="#ecf0f1"/>
-        <path d="M10 48 C 15 35, 35 35, 40 48 Z" fill="#ecf0f1"/>
-        <text x="7" y="70" class="user-text">Usuario</text>
-    </g>
+</div>
 
-    <!-- Caja Principal: Máquina Host -->
-    <rect x="150" y="30" width="630" height="540" class="host-box"/>
-    <text x="170" y="60" class="host-text">Máquina Host (Ubuntu / Docker Engine)</text>
+<p align="center">
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java Badge"/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Badge"/>
+<img src="https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform Badge"/>
+<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL Badge"/>
+<img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx Badge"/>
+</p>
 
-    <!-- Caja de Red: Red Docker Segura -->
-    <rect x="170" y="90" width="590" height="420" class="network-box"/>
-    <text x="190" y="120" class="network-text">Red Segura Docker (`fortaleza-net`)</text>
+Índice
+Descripción del Proyecto
 
-    <!-- Contenedores -->
-    <g id="nginx">
-        <rect x="200" y="230" width="160" height="140" class="container-box proxy-box"/>
-        <text x="215" y="260" class="container-text">Gateway (Nginx)</text>
-        <text x="210" y="285" class="label-text">Proxy Inverso</text>
-        <text x="245" y="330" class="port-text">Puerto: 80</text>
-    </g>
-    <g id="app">
-        <rect x="410" y="230" width="160" height="140" class="container-box app-box"/>
-        <text x="415" y="260" class="container-text">Aplicación (Java)</text>
-        <text x="420" y="285" class="label-text">Lógica de Negocio</text>
-        <text x="455" y="330" class="port-text">Puerto: 8080</text>
-    </g>
-    <g id="db">
-        <rect x="620" y="230" width="160" height="140" class="container-box db-box"/>
-        <text x="630" y="260" class="container-text">Base de Datos</text>
-        <text x="635" y="285" class="label-text">(PostgreSQL)</text>
-        <text x="665" y="330" class="port-text">Puerto: 5432</text>
-    </g>
+Diagrama de Arquitectura
 
-    <!-- Flujos de Tráfico -->
-    <!-- 1. User -> Nginx -->
-    <path id="flow1" d="M90,295 C 140,295 160,295 200,295" fill="none" class="arrow-line success-flow" marker-end="url(#arrowhead-success)"/>
-    <text class="flow-text" dy="-5"><textPath href="#flow1" startOffset="50%" text-anchor="middle">1. Petición HTTP</textPath></text>
+Arsenal Tecnológico
 
-    <!-- 2. Nginx -> App -->
-    <path id="flow2" d="M360,295 C 380,295 390,295 410,295" fill="none" class="arrow-line internal-flow" marker-end="url(#arrowhead-internal)"/>
-    <text class="flow-text" dy="-5"><textPath href="#flow2" startOffset="50%" text-anchor="middle">2. Proxy Pass</textPath></text>
+Instrucciones de Ejecución
 
-    <!-- 3. App -> DB -->
-    <path id="flow3" d="M570,295 C 590,295 600,295 620,295" fill="none" class="arrow-line internal-flow" marker-end="url(#arrowhead-internal)"/>
-    <text class="flow-text" dy="-5"><textPath href="#flow3" startOffset="50%" text-anchor="middle">3. Conexión JDBC</textPath></text>
+Entorno de Desarrollo (Docker Compose)
 
-    <!-- 4. Blocked Flow -->
-    <path id="flow4" d="M90,320 C 200,400 350,420 410,350" fill="none" class="arrow-line blocked-flow"/>
-    <use href="#block-symbol" x="402" y="342"/>
-    <text class="flow-text" fill="#c0392b" x="230" y="430">4. Acceso Directo a la App (BLOQUEADO)</text>
+Despliegue Simulado (Terraform)
 
-    <!-- Leyenda -->
-    <g transform="translate(180, 530)">
-        <rect x="0" y="0" width="10" height="10" fill="#2ecc71" rx="2"/>
-        <text x="20" y="10" class="label-text">Tráfico Público Permitido</text>
-        <rect x="220" y="0" width="10" height="10" fill="#3498db" rx="2"/>
-        <text x="240" y="10" class="label-text">Tráfico Interno Permitido</text>
-        <rect x="450" y="0" width="10" height="10" fill="#e74c3c" rx="2"/>
-        <text x="470" y="10" class="label-text">Tráfico Bloqueado</text>
-    </g>
-</svg>
+Conceptos de Nube Demostrados
+
+1. Descripción del Proyecto
+Este proyecto es una demostración práctica de cómo desplegar una arquitectura web de tres niveles (Gateway, Aplicación, Base de Datos) de forma segura, persistente y reproducible, aplicando los principios de la Computación en la Nube en un entorno local.
+
+El objetivo es demostrar el dominio de Infraestructura como Código (IaC), Contenerización y patrones de seguridad de red. La infraestructura es gestionada de forma declarativa con Terraform, los servicios se ejecutan en contenedores Docker aislados y la orquestación del entorno de desarrollo se maneja con Docker Compose.
+
+La aplicación es un servicio web Java (Servlet) que se conecta a una base de datos PostgreSQL para registrar y mostrar un contador de visitas, demostrando así una arquitectura con estado y persistencia de datos.
+
+2. Diagrama de Arquitectura
+El siguiente diagrama ilustra la arquitectura final de 3 niveles. El contenedor Nginx actúa como el único punto de entrada, recibiendo el tráfico y redirigiéndolo a la aplicación. La aplicación, a su vez, es la única que puede comunicarse con la base de datos PostgreSQL. Tanto la aplicación como la base de datos están completamente aisladas del exterior.
+
+<p align="center">
+<img src="diagrama_v2.svg" alt="Diagrama de Arquitectura v2" width="90%">
+</p>
+
+3. Arsenal Tecnológico
+Tecnología
+
+Rol en el Proyecto
+
+Material de Estudio Relevante
+
+☕ Java / Servlet
+
+Desarrollo de la lógica de negocio de la aplicación (Contador de visitas).
+
+Semana 12: Servelet
+
+🐘 PostgreSQL
+
+Sistema de gestión de base de datos para la persistencia de datos.
+
+Semana 6: Dockers (Contenerización de BD)
+
+🐳 Docker
+
+Plataforma de contenerización para empaquetar y aislar cada servicio.
+
+Semana 6: Dockers
+
+🐋 Docker Compose
+
+Orquestación del entorno de desarrollo local multi-contenedor.
+
+Semana 6: Dockers
+
+🚀 Nginx
+
+Implementado como Reverse Proxy para actuar como Gateway de seguridad.
+
+Semana 9: Seguridad en la nube
+
+Terraform
+
+Herramienta de IaC para el aprovisionamiento de la infraestructura de despliegue.
+
+Semana 11: Infraestructura como código
+
+🐙 Git y GitHub
+
+Sistema de control de versiones y plataforma de hospedaje de código.
+
+Semana 10: Automatización de los DevOps
+
+4. Instrucciones de Ejecución
+4.1. Entorno de Desarrollo (con Docker Compose)
+Este es el método recomendado para pruebas rápidas y desarrollo.
+
+Clonar el Repositorio:
+
+git clone https://github.com/j03l1725/fortaleza-local-proyecto.git
+cd fortaleza-local-proyecto
+
+Construir y Levantar la Arquitectura:
+Este único comando construirá la imagen de la aplicación y lanzará los tres contenedores en el orden correcto.
+
+docker-compose up --build
+
+Verificar el Funcionamiento:
+Abre tu navegador o usa curl para acceder a la aplicación. El contador de visitas debe aumentar con cada petición.
+
+curl http://localhost/
+
+Detener y Limpiar el Entorno:
+
+docker-compose down
+
+4.2. Despliegue Simulado (con Terraform)
+Este método simula un despliegue de producción gestionado por IaC.
+
+Construir la Imagen de la Aplicación:
+Asegúrate de que el archivo .war esté generado (mvn clean package) y luego construye la imagen Docker.
+
+docker build -t fortaleza-app:1.0 .
+
+Desplegar la Infraestructura con Terraform:
+
+cd infra
+terraform init
+terraform apply -auto-approve
+
+Verificar la Implementación:
+
+Prueba de acceso público (debe funcionar):
+
+curl http://localhost/
+
+Prueba de acceso directo a la app (debe fallar):
+
+curl http://localhost:8080/
+
+Destruir la Infraestructura:
+
+terraform destroy -auto-approve
+
+5. Conceptos de Nube Demostrados
+Este proyecto simula los siguientes conceptos de seguridad y arquitectura de nube:
+
+Arquitectura de 3 Niveles: La separación de responsabilidades en Gateway (Nginx), Lógica (Java App) y Datos (PostgreSQL) es un pilar de las arquitecturas robustas.
+
+Red Privada (VPC): Simulada mediante una red Docker personalizada (fortaleza-net), que crea un perímetro de red aislado.
+
+Aislamiento de Recursos (Subredes Privadas): Tanto la aplicación como la base de datos no exponen puertos al host, simulando recursos en subredes privadas.
+
+Gateway y Control de Acceso: El contenedor Nginx actúa como nuestro Gateway controlado. El aislamiento de red de Docker simula un grupo de seguridad que solo permite el tráfico desde el proxy hacia la aplicación y desde la aplicación hacia la base de datos.
+
+Persistencia de Datos: El uso de volúmenes de Docker demuestra cómo se gestionan los datos con estado en un entorno de contenedores efímeros.
