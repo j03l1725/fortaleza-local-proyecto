@@ -1,4 +1,4 @@
-# 🛡️ Fortaleza Local v2 🛡️
+# Fortaleza Local v2
 ### Simulación de una Arquitectura de Nube Segura y Automatizada
 
 <div align="center">
@@ -13,7 +13,7 @@
 
 ---
 
-## 📋 Índice
+## Índice
 * [Descripción del Proyecto](#-descripción-del-proyecto)
 * [Diagrama de Arquitectura](#️-diagrama-de-arquitectura)
 * [Arsenal Tecnológico](#️-arsenal-tecnológico)
@@ -24,7 +24,7 @@
 
 ---
 
-## 📝 Descripción del Proyecto
+## Descripción del Proyecto
 Este proyecto es una demostración práctica de cómo desplegar una arquitectura web de tres niveles (**Gateway**, **Aplicación**, **Base de Datos**) de forma segura, persistente y reproducible, aplicando los principios de la Computación en la Nube en un entorno local.
 
 El objetivo es demostrar el dominio de **Infraestructura como Código (IaC)**, **Contenerización** y patrones de seguridad de red. La infraestructura es gestionada de forma declarativa con **Terraform**, los servicios se ejecutan en contenedores **Docker** aislados y la orquestación del entorno de desarrollo se maneja con **Docker Compose**.
@@ -33,7 +33,7 @@ La aplicación es un servicio web Java (Servlet) que se conecta a una base de da
 
 ---
 
-## 🏗️ Diagrama de Arquitectura
+## Diagrama de Arquitectura
 El siguiente diagrama ilustra la arquitectura final de 3 niveles. El contenedor **Nginx** actúa como el único punto de entrada, recibiendo el tráfico y redirigiéndolo a la aplicación. La aplicación, a su vez, es la única que puede comunicarse con la base de datos **PostgreSQL**. Tanto la aplicación como la base de datos están completamente aisladas del exterior.
 
 <p align="center">
@@ -42,7 +42,7 @@ El siguiente diagrama ilustra la arquitectura final de 3 niveles. El contenedor 
 
 ---
 
-## 🛠️ Arsenal Tecnológico
+## Herramientas utilizadas
 
 | Tecnología | Rol en el Proyecto |
 | :--- | :--- | 
@@ -56,7 +56,7 @@ El siguiente diagrama ilustra la arquitectura final de 3 niveles. El contenedor 
 
 ---
 
-## 🚀 Instrucciones de Ejecución
+## Instrucciones de Ejecución
 
 ### Entorno de Desarrollo (con Docker Compose)
 Este es el método recomendado para pruebas rápidas y desarrollo.
@@ -117,7 +117,7 @@ Este método simula un despliegue de producción gestionado por IaC.
 
 ---
 
-## ☁️ Conceptos de Nube Demostrados
+## Conceptos de Nube Demostrados
 Este proyecto simula los siguientes conceptos de seguridad y arquitectura de nube:
 
 * **Arquitectura de 3 Niveles:** La separación de responsabilidades en Gateway (Nginx), Lógica (Java App) y Datos (PostgreSQL) es un pilar de las arquitecturas robustas.
