@@ -46,13 +46,13 @@ El siguiente diagrama ilustra la arquitectura final de 3 niveles. El contenedor 
 
 | Tecnología | Rol en el Proyecto |
 | :--- | :--- | 
-| ☕ **Java / Servlet** | Desarrollo de la lógica de negocio de la aplicación (Contador de visitas). |
-| 🐘 **PostgreSQL** | Sistema de gestión de base de datos para la persistencia de datos. |
-| 🐳 **Docker** | Plataforma de contenerización para empaquetar y aislar cada servicio. |
-| 🐋 **Docker Compose** | Orquestación del entorno de desarrollo local multi-contenedor. |
-| 🚀 **Nginx** | Implementado como Reverse Proxy para actuar como Gateway de seguridad. |
-| 🌍 **Terraform** | Herramienta de IaC para el aprovisionamiento de la infraestructura. |
-| 🐙 **Git y GitHub** | Sistema de control de versiones y plataforma de hospedaje de código. |
+| **Java / Servlet** | Desarrollo de la lógica de negocio de la aplicación (Contador de visitas). |
+| **PostgreSQL** | Sistema de gestión de base de datos para la persistencia de datos. |
+| **Docker** | Plataforma de contenerización para empaquetar y aislar cada servicio. |
+| **Docker Compose** | Orquestación del entorno de desarrollo local multi-contenedor. |
+| **Nginx** | Implementado como Reverse Proxy para actuar como Gateway de seguridad. |
+| **Terraform** | Herramienta de IaC para el aprovisionamiento de la infraestructura. |
+| **Git y GitHub** | Sistema de control de versiones y plataforma de hospedaje de código. |
 
 ---
 
